@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call DashScope API</title>
+</head>
+<body>
+    <h1>DashScope API Call Example</h1>
+    <button id="callApiButton">Call API</button>
+    <pre id="responseContainer"></pre>
+
+    <script>
+        document.getElementById("callApiButton").addEventListener("click", async () => {
+            const apiKey = "sk-c2df74a9cd76485fa001c84d30806771";  // 替换为你的 DashScope API Key
+            const url = "https://dashscope.aliyuncs.com/api/v1/apps/a6c6b68c3c7840d587e122dc1180df59/completion";
+
+            const data = {
+                input: {
+                    prompt: "Introduce the capital of China"
+                },
+                parameters: {},
+                debug: {}
+            };
+
+            try {
+                // 发送 POST 请求
+                const response = await fetch(url, {
+                    method: "POST",
+                    mode: 'no-cors',
+                    headers: {
+                        "Authorization": `Bearer ${apiKey}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // 处理响应
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                // 将响应内容显示在页面上
+                document.getElementById("responseContainer").textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                // 显示错误信息
+                document.getElementById("responseContainer").textContent = `Error: ${error.message}`;
+                console.error("Error:", error);
+            }
+        });
+    </script>
+</body>
+</html>
