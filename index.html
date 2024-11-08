@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8"/>
-    <title>仓库管理员</title>
-  </head>
-<a href="JS/calculator.min.js">calculator.min.js</a>
-  <body>
-    
-  </body>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warehouse Admin</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="title">Warehouse Admin</h1>
+    <div class="search-bar">
+      <select id="categorySelect" class="search-category" onchange="filterByCategory()">
+        <option value="">所有文件</option>
+        <option value="js">JavaScript</option>
+        <option value="apk">Apk</option>
+      </select>
+      <input type="text" id="searchInput" class="search-input" placeholder="搜索文件..."
+        onkeypress="handleKeyPress(event)" />
+      <button class="search-button" onclick="searchImages()">搜索</button>
+    </div>
+    <ul id="imageList" class="image-list"></ul>
+  </div>
+
+  <footer id="footer">
+    <p>
+      Released under the MIT License.<br />Copyright © 2024-present
+      <a href="https://yoseya.top" target="_blank">Yoseya</a>
+    </p>
+  </footer>
+  <script src="./script.js"></script>
+</body>
+
 </html>

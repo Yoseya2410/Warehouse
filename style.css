@@ -1,0 +1,142 @@
+body {
+  font-family: Arial, sans-serif;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.search-category {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+}
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  flex: 1;
+}
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.search-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+.search-button:hover {
+  background-color: #0056b3;
+}
+.image-list {
+  list-style-type: none;
+  padding: 0;
+}
+.image-item {
+  background-color: #f4f4f4;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.image-item:hover {
+  background-color: #e0e0e0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-category,
+  .search-input,
+  .search-button {
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  .search-input {
+    border-left: 1px solid #ccc;
+  }
+}
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  .search-category,
+  .search-input {
+    border-color: #444;
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  .search-input:focus {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  .search-button {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  .search-button:hover {
+    background-color: #333333;
+  }
+  .image-item {
+    background-color: #222222;
+  }
+  .image-item:hover {
+    background-color: #333333;
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  position: relative;
+  color: #666;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* 分割线宽度 */
+  height: 1px;
+  background-color: #ccc;
+}
+
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 1000;
+  white-space: nowrap;
+}
