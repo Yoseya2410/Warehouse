@@ -45,17 +45,6 @@ function displayImages(images) {
             tooltip.style.display = 'none';
         });
 
-        // 添加移动端长按事件监听器
-        let touchTimeout;
-        li.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            touchTimeout = setTimeout(() => {
-                tooltip.style.display = 'block';
-                tooltip.style.left = `${e.touches[0].pageX + 10}px`;
-                tooltip.style.top = `${e.touches[0].pageY + 10}px`;
-            }, 1000); // 长按1秒后显示描述
-        });
-
         li.addEventListener('touchend', () => {
             clearTimeout(touchTimeout);
             tooltip.style.display = 'none';
@@ -66,13 +55,7 @@ function displayImages(images) {
             e.preventDefault(); // 防止默认行为
             window.location.href = image.url; // 点击后跳转到文件的URL
         });
-
-        // 添加触摸点击事件监听器
-        li.addEventListener('touchend', (e) => {
-            e.preventDefault(); // 防止默认行为
-            window.location.href = image.url; // 点击后跳转到文件的URL
-        });
-
+        
         imageList.appendChild(li); // 将新的列表项添加到列表中
     });
 }
