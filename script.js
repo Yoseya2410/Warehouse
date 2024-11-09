@@ -34,19 +34,31 @@ function displayImages(images) {
         document.body.appendChild(tooltip);
 
         // 添加鼠标悬停事件监听器
+        let timeoutId;
         li.addEventListener('mouseover', (e) => {
-            tooltip.style.display = 'block';
-            tooltip.style.left = `${e.pageX + 10}px`;
-            tooltip.style.top = `${e.pageY + 10}px`;
+            // 清除之前的定时器
+            clearTimeout(timeoutId);
+
+            // 设置新的定时器
+            timeoutId = setTimeout(() => {
+                // 获取当前li元素的位置
+                const rect = li.getBoundingClientRect();
+                const top = rect.top + window.scrollY + li.offsetHeight + 10; // 在li下方显示
+                const left = rect.left + window.scrollX;
+
+                // 设置tooltip的位置
+                tooltip.style.left = `${left}px`;
+                tooltip.style.top = `${top}px`;
+
+                // 显示tooltip
+                tooltip.style.display = 'block';
+            }, 500); // 悬停时间为500毫秒
         });
 
         // 添加鼠标移出事件监听器
         li.addEventListener('mouseout', () => {
-            tooltip.style.display = 'none';
-        });
-
-        li.addEventListener('touchend', () => {
-            clearTimeout(touchTimeout);
+            // 清除定时器并隐藏tooltip
+            clearTimeout(timeoutId);
             tooltip.style.display = 'none';
         });
 
@@ -55,7 +67,7 @@ function displayImages(images) {
             e.preventDefault(); // 防止默认行为
             window.location.href = image.url; // 点击后跳转到文件的URL
         });
-        
+
         imageList.appendChild(li); // 将新的列表项添加到列表中
     });
 }
