@@ -1,15 +1,17 @@
 // 定义一个包含文件信息的数组
 const images = [
     // js 类别
-    { id: 1, name: 'calculator.min.js', version: '', description: '一个具有计算器功能的js库', url: 'JS/calculator.min.js', category: 'js' },
-    { id: 2, name: 'deployggb.js', version: '', description: '在网页中嵌入 GeoGebra 图形', url: 'JS/deployggb.js', category: 'js' },
-    { id: 3, name: 'echarts.min.js', version: '', description: 'ECharts 图表库的压缩版本', url: 'JS/echarts.min.js', category: 'js' },
-    { id: 4, name: 'function-plot.js', version: '', description: '一个基于 D3.js 构建的用于绘制数学函数图像的 JavaScript 库', url: 'JS/function-plot.js', category: 'js' },
-    { id: 5, name: 'numeric.min.js', version: '', description: '一个用于在 JavaScript 中进行数值计算的库', url: 'JS/numeric.min.js', category: 'js' },
+    { name: 'calculator.min.js', version: '', description: '一个具有计算器功能的js库', url: 'JS/calculator.min.js', category: 'js' },
+    { name: 'deployggb.js', version: '', description: '在网页中嵌入 GeoGebra 图形', url: 'JS/deployggb.js', category: 'js' },
+    { name: 'echarts.min.js', version: '', description: 'ECharts 图表库的压缩版本', url: 'JS/echarts.min.js', category: 'js' },
+    { name: 'function-plot.js', version: '', description: '一个基于 D3.js 构建的用于绘制数学函数图像的 JavaScript 库', url: 'JS/function-plot.js', category: 'js' },
+    { name: 'numeric.min.js', version: '', description: '一个用于在 JavaScript 中进行数值计算的库', url: 'JS/numeric.min.js', category: 'js' },
+    { name: 'KaTex', version: '0.16.11', description: '基于 LaTex 语法的 Web 数学排版库', url: 'JS/katex.zip', category: 'js' },
     // apk 类别
-    { id: 6, name: 'Aidea', version: '2.1.2', description: 'Yoseya 制作的第一款软件', url: 'apk/Aidea_2.1.2.apk', category: 'apk' },
-    { id: 7, name: 'Aidea code', version: '1.0.4', description: 'Yoseya 的另一款作品，基于Aidea2.0 的精简版，专注脚本编写', url: 'apk/Aidea code_1.0.4.apk', category: 'apk' },
+    { name: 'Aidea', version: '2.1.2', description: 'Yoseya 制作的第一款软件', url: 'apk/Aidea_2.1.2.apk', category: 'apk' },
+    { name: 'Aidea code', version: '1.0.4', description: 'Yoseya 的另一款作品，基于Aidea2.0 的精简版，专注脚本编写', url: 'apk/Aidea code_1.0.4.apk', category: 'apk' },
     // 更多文件...
+
 ];
 
 // 按名称排序文件数组
