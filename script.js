@@ -10,6 +10,7 @@ const images = [
     // apk 类别
     { name: 'Aidea', version: '2.1.2', description: 'Yoseya 制作的第一款软件', url: 'apk/Aidea_2.1.2.apk', category: 'apk' },
     { name: 'Aidea code', version: '1.0.4', description: 'Yoseya 的另一款作品，基于Aidea2.0 的精简版，专注脚本编写', url: 'apk/Aidea code_1.0.4.apk', category: 'apk' },
+    { name: 'FusionApp', version: 'beta8.7.2', description: '用lua调用Java开发Android应用程序的IDE软件', url: 'apk/FusionApp_2.0.apk', category: 'apk' },
     // 更多文件...
 
 ];
