@@ -1,21 +1,18 @@
 // 定义一个包含文件信息的数组
-const images = [
-    // js 类别
-    { name: 'calculator.min.js', version: '', description: '一个具有计算器功能的js库', url: 'JS/calculator.min.js', category: 'js' },
-    { name: 'deployggb.js', version: '', description: '在网页中嵌入 GeoGebra 图形', url: 'JS/deployggb.js', category: 'js' },
-    { name: 'echarts.min.js', version: '', description: 'ECharts 图表库的压缩版本', url: 'JS/echarts.min.js', category: 'js' },
-    { name: 'function-plot.js', version: '', description: '一个基于 D3.js 构建的用于绘制数学函数图像的 JavaScript 库', url: 'JS/function-plot.js', category: 'js' },
-    { name: 'numeric.min.js', version: '', description: '一个用于在 JavaScript 中进行数值计算的库', url: 'JS/numeric.min.js', category: 'js' },
-    { name: 'KaTex', version: '0.16.11', description: '基于 LaTex 语法的 Web 数学排版库', url: 'JS/katex.zip', category: 'js' },
-    // apk 类别
-    { name: 'Aidea', version: '2.1.2', description: 'Yoseya 制作的第一款软件', url: 'apk/Aidea_2.1.2.apk', category: 'apk' },
-    { name: 'Aidea code', version: '1.0.4', description: 'Yoseya 的另一款作品，基于Aidea2.0 的精简版，专注脚本编写', url: 'apk/Aidea code_1.0.4.apk', category: 'apk' },
-    { name: 'FusionApp', version: 'beta8.7.2', description: '用lua调用Java开发Android应用程序的IDE软件', url: 'apk/FusionApp_2.0.apk', category: 'apk' },
-    { name: 'Bluetooth debug', version: '1.9', description: '蓝牙模块调试工具', url: 'apk/Bluetooth debug_1.9.apk', category: 'apk' },
-    { name: 'NFC Tools', version: '8.7', description: 'NFC读写工具', url: 'apk/NFC Tools PRO_8.7.apk', category: 'apk' },
-    // 更多文件...
+let images = [];
 
-];
+// 从 data.json 文件加载数据
+fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+        images = data;
+        // 按名称排序文件数组
+        images.sort((a, b) => a.name.localeCompare(b.name));
+
+        // 初始化显示所有文件
+        filterImagesByURLParams();
+    })
+    .catch(error => console.error('Error fetching data:', error));
 
 // 按名称排序文件数组
 images.sort((a, b) => a.name.localeCompare(b.name));
@@ -129,6 +126,41 @@ function filterImagesByURLParams() {
 
     displayImages(filteredImages);
 }
+
+// 自动填充分类选项
+function populateCategories() {
+    const categorySelect = document.getElementById('categorySelect');
+
+    // 从 data.json 获取数据
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            // 提取所有唯一的 category
+            const categories = [...new Set(data.map(item => item.category))];
+
+            // 清空当前选项（除了“所有文件”）
+            categorySelect.innerHTML = '<option value="">所有文件</option>';
+
+            // 添加新选项
+            categories.forEach(category => {
+                if (category) {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    categorySelect.appendChild(option);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+
+
+// 页面加载时调用
+window.onload = function () {
+    filterImagesByURLParams();
+    populateCategories(); // 调用分类填充函数
+};
 
 // 初始化显示所有文件
 filterImagesByURLParams();
